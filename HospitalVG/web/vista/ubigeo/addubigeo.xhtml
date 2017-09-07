@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ubigeodialog"
+                  widgetVar="createubigeo"
+                  modal="true"
+                  resizable="false"
+                  appendTo="@(body)">
+            <h:form id="addform">
+                <p:panelGrid id="addpanel" columns="2">
+
+                    <p:outputLabel value="Codigo" for="cod"/>
+                    <p:inputText id="cod" value="#{ubigeoController.selected.numubi}" required="true" requiredMessage="Ingrese Codigo"/>
+
+                    <p:outputLabel value="Departamento" for="dep"/>
+                    <p:inputText id="dep" value="#{ubigeoController.selected.dptoubi}" required="true" requiredMessage="Ingrese Departamento"/>
+
+                    <p:outputLabel value="Provincia" for="prov"/>
+                    <p:inputText id="prov" value="#{ubigeoController.selected.provubi}" required="true" requiredMessage="Ingrese Provincia"/>
+
+                    <p:outputLabel value="Distrito" for="dist"/>
+                    <p:inputText id="dist" value="#{ubigeoController.selected.distubi}" required="true" requiredMessage="Ingrese Distrito"/>
+
+                    <p:commandButton value="ingresar"
+                                     actionListener="#{ubigeoController.create()}"
+                                     oncomplete="handleSubmit(args,'createubigeo');"
+                                     update=":form:msg :form:data addpanel"/>
+                    <p:commandButton value="Cancelar" immediate="true" onclick="PF('createubigeo').hide();"/>
+
+                </p:panelGrid>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

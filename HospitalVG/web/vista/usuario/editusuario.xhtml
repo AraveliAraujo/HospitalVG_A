@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="editusuariodialog"
+                  widgetVar="editarusuariodialog"
+                  modal="true"
+                  resizable="false"
+                  appendTo="@(body)">
+
+            <h:form id="editform">
+                <p:panelGrid id="editpanel" columns="2">
+                    <p:outputLabel value="Codigo:" for="numusu" />
+                    <p:inputText id="numusu"
+                                 value="#{usuarioController.selected.numusu}"
+                                 required="true"
+                                 requiredMessage="Ingrese el Codigo"/>
+
+                    <p:outputLabel value="Nombre:" for="nomusu" />
+                    <p:inputText id="nomusu" value="#{usuarioController.selected.nomusu}"/>
+
+                    <p:outputLabel value="Usuario:" for="usuusu" />
+                    <p:inputText id="usuusu" value="#{usuarioController.selected.usuusu}"/>
+
+                    <p:outputLabel value="Contraseña:" for="pwdusu"/>
+                    <p:password id="pwdusu"
+                                value="#{usuarioController.selected.pwdusu}"
+                                match="pwdusu2"
+                                validatorMessage="Las Contraseñas no coinciden"
+                                required="true"
+                                requiredMessage="Ingrese contraseña"/>
+                    
+                    <p:outputLabel value="Repetir Contraseña:" for="pwdusu2" />
+                    <p:password id="pwdusu2" required="true" requiredMessage="Ingrese de nuevo la contraseña"/>
+
+                    <p:outputLabel value="DNI:" for="dniusu" />
+                    <p:inputText id="dniusu" value="#{usuarioController.selected.dniusu}"/>
+
+                    <p:outputLabel value="Ingreso:" for="ingusu" />
+                    <p:calendar id="ingusu"
+                                pattern="MM/dd/yyyy"
+                                value="#{usuarioController.selected.ingusu}"
+                                showOn="button"/>
+
+                    <p:outputLabel value="Telefono:" for="telfusu" />
+                    <p:inputText id="telfusu" value="#{usuarioController.selected.telfusu}"/>
+
+                    <p:outputLabel value="Nacimiento:" for="fnacusu" />
+                    <p:calendar id="fnacusu"
+                                pattern="MM/dd/yyyy"
+                                value="#{usuarioController.selected.fnacusu}"
+                                showOn="button"/>
+
+                    <p:outputLabel value="Cargo:" for="cargusu" />
+                    <p:inputText id="cargusu" value="#{usuarioController.selected.cargusu}"/>
+
+                    <p:outputLabel value="Direccion:" for="dirusu" />
+                    <p:inputText id="dirusu" value="#{usuarioController.selected.dirusu}"/>
+
+                    <p:outputLabel value="Ubicacion:" for="ubiusu" />
+                    <p:inputText id="ubiusu" value="#{usuarioController.selected.ubiusu}"/>
+
+                    <p:outputLabel value="Level:" for="levusu" />
+                    <p:inputText id="levusu" value="#{usuarioController.selected.levusu}"/>
+
+                    <p:commandButton value="Actualizar"
+                                     actionListener="#{usuarioController.actualizarCifrando()}"
+                                     oncomplete="handleSubmit(args,'editarusuariodialog');"
+                                     update=":form:msg :form:data editpanel"/>
+                    <p:commandButton value="Cancelar" immediate="true" onclick="PF('editarusuariodialog').hide();"/>
+
+                </p:panelGrid>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+
+</html>
